@@ -94,6 +94,15 @@ const Numbers = (props) => {
   };
   Numbers.list = _.range(1, 10);
 
+const DoneFrame = (props) => {
+	return(
+		<div>
+			<h2 className="p-4 font-weight-bold">
+				{props.doneStatus}
+			</h2>
+		</div>
+	);
+}  
 class Game extends React.Component {
 	static randomNumber = () => 1 + Math.floor(Math.random()*9);
 	state = {
@@ -102,6 +111,7 @@ class Game extends React.Component {
 		usedNumbers: [],
 		answerIsCorrect: null,
 		redraws: 5,
+		doneStatus: 'Game Over!',
 	};
 	selectNumber = (clickedNumber) => {
 		/* Handling the condition where same no gets added in the answer compo */
@@ -154,7 +164,8 @@ class Game extends React.Component {
 			randomNumberOfStars, 
 			answerIsCorrect, 
 			usedNumbers,
-			redraws
+			redraws,
+			doneStatus
 						} = this.state;
 		return (
 			<div className="container-fluid text-center p-5">
@@ -181,6 +192,8 @@ class Game extends React.Component {
 							selectNumber = {this.selectNumber}	
 							usedNumbers = {usedNumbers}
 					/>
+
+					<DoneFrame doneStatus={doneStatus}/>
 			</div>
 		);
   }
