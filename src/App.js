@@ -124,12 +124,19 @@ class Game extends React.Component {
 	}
 	acceptAnswer = () => {
 		this.setState( prevState => ({
-			/* Simply mark the no as used if its in selectedNumberss list  & re render UI*/
+			/* Simply mark the no as used if its in selectedNumbers list  & re render UI*/
 			usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
 			answerIsCorrect: null,
-			selectedNumberss: [],
+			selectedNumbers: [],
 			randomNumberOfStars: 1 + Math.floor(Math.random()*9),
 		}));
+	}
+	redraw = () => {
+		this.setState({
+			randomNumberOfStars: 1 + Math.floor(Math.random()*9),
+			answerIsCorrect: null,
+			selectedNumbers: [],
+		});
 	}
 	render() {
 		/* Destructuring the elements */
