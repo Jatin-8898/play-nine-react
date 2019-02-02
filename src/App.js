@@ -9,12 +9,21 @@ const Button = (props) => {
   );
 };
 
+const Answer = (props) => {
+  return (
+    <div className="col-5">
+      ...
+    </div>
+  );
+};
+
 class Game extends React.Component {
 	render() {
   	return (
     	<div>
       	<h3>Play Nine</h3>
         <Button/>
+        <Answer/>
       </div>
     );
   }
