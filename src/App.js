@@ -163,7 +163,9 @@ class Game extends React.Component {
 			answerIsCorrect: null,
 			selectedNumbers: [],
 			randomNumberOfStars: Game.randomNumber(),
-		}));
+		
+		}), this.updateDoneStatus);
+		/* Since we want to updateStatus when react is done setting the state so we used this callback fun since the setState is async using multiple setStates wont work intendingly */
 	}
 	redraw = () => {
 		if(this.state.redraws === 0){
@@ -174,7 +176,8 @@ class Game extends React.Component {
 			answerIsCorrect: null,
 			selectedNumbers: [],
 			redraws: prevState.redraws - 1,
-		}));
+		
+		}), this.updateDoneStatus);
 	}
 	
 	PossibleSolutions = ({randomNumberOfStars, usedNumbers}) => {
@@ -186,7 +189,7 @@ class Game extends React.Component {
 	};
 	updateDoneStatus = () => {
 		this.setState( prevState => {
-			if(prevState.usedNumbers.length === 0){
+			if(prevState.usedNumbers.length === 9){
 				return {doneStatus: 'Done, Thanks For Playing!!'}
 			}
 			if(prevState.redraws === 0 && !this.PossibleSolutions(prevState)){
