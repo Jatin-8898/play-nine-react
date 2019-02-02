@@ -48,7 +48,9 @@ const Button = (props) => {
 		<div className="col-2 pt-2">
 			{button}
 			<br /><br/>
-			<button className="btn btn-warning btn-sm"><i className="fa fa-refresh"></i></button>
+			<button className="btn btn-warning btn-sm" onClick={props.redraw}>
+				<i className="fa fa-refresh"></i>
+			</button>
 		</div>
   );
 };
@@ -143,14 +145,18 @@ class Game extends React.Component {
 				<hr />
 				<div className="row">
 					<Stars numberOfStars={randomNumberOfStars}/>
-					<Button selectedNumbers={selectedNumbers}
-							checkAnswer={this.checkAnswer}
-							answerIsCorrect={answerIsCorrect}
-							acceptAnswer={this.acceptAnswer}
+
+					<Button selectedNumbers = {selectedNumbers}
+							checkAnswer = {this.checkAnswer}
+							answerIsCorrect = {answerIsCorrect}
+							acceptAnswer = {this.acceptAnswer}
+							redraw = {this.redraw}
 					/>
+
 					<Answer selectedNumbers={selectedNumbers}
 							unselectNumber={this.unselectNumber}
 					/>
+
 				</div>
 				<br />
 					<Numbers selectedNumbers = {selectedNumbers}
