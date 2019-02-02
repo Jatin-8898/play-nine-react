@@ -24,7 +24,7 @@ const Button = (props) => {
 	let button;
 	switch(props.answerIsCorrect){
 		case true:
-			button = <button className="btn btn-success">
+			button = <button className="btn btn-success" onClick={props.acceptAnswer}>
 						<i className="fa fa-check"></i>
 					</button>;
 			break;
@@ -91,7 +91,7 @@ class Game extends React.Component {
 	state = {
 		selectedNumber: [],
 		randomNumberOfStars: 1 + Math.floor(Math.random()*9),
-		usedNumbers: [4,7],
+		usedNumbers: [],
 		answerIsCorrect: null,
 	};
 	selectNumber = (clickedNumber) => {
@@ -119,7 +119,13 @@ class Game extends React.Component {
 		}));
 	}
 	acceptAnswer = () => {
-
+		this.setState( prevState => ({
+			/* Simply mark the no as used if its in selectedNumbers list  & re render UI*/
+			usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumber),
+			answerIsCorrect: null,
+			selectedNumbers: [],
+			randomNumberOfStars: 1 + Math.floor(Math.random()*9),
+		}));
 	}
 	render() {
 		/* Destructuring the elements */
@@ -138,6 +144,7 @@ class Game extends React.Component {
 					<Button selectedNumber={selectedNumber}
 							checkAnswer={this.checkAnswer}
 							answerIsCorrect={answerIsCorrect}
+							acceptAnswer={this.acceptAnswer}
 					/>
 					<Answer selectedNumber={selectedNumber}
 							unselectNumber={this.unselectNumber}
