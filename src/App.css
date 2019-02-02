@@ -12,22 +12,29 @@
 
 span {
   display: inline-block;
-  margin: 0.5em;
+  margin: 0.7em;
   text-align: center;
   background-color: #ccc;
-  width: 24px;
+  width: 45px;
+  padding: 10px;
+  height: 45px;
   border-radius: 50%;
   cursor: pointer;
 }
 
+.card {
+  height: 150px;
+  padding: 4% 0;
+}
+
 .selected {
-  background-color: #eee;
-  color: #ddd;
+  background-color: #fff;
+  color: #333;
   cursor: not-allowed;
 }
 
 .used {
   background-color: #aaddaa;
-  color: #99bb99;
+  color: #333;
   cursor: not-allowed;
 }

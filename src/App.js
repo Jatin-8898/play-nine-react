@@ -45,8 +45,10 @@ const Button = (props) => {
 			break;	
 	}
 	return (
-		<div className="col-2">
+		<div className="col-2 pt-2">
 			{button}
+			<br /><br/>
+			<button className="btn btn-warning btn-sm"><i className="fa fa-refresh"></i></button>
 		</div>
   );
 };
@@ -72,7 +74,7 @@ const Numbers = (props) => {
 		}
 	}
 	return (
-	  <div className="card text-center">
+	  <div className="card text-dark bg-dark ">
 		<div>
 		{Numbers.list.map((number, i) =>
         	<span key = {i} className = {numberClassName(number)}
