@@ -28,17 +28,19 @@ const Button = (props) => {
 						<i className="fa fa-check"></i>
 					</button>;
 			break;
+
 		case false:
 			button = <button className="btn btn-danger">
 						<i className="fa fa-times"></i>
 					</button>;
 			break;
+
 		default:
 			button  = 
 				<button className="btn btn-primary" 
 						onClick = {props.checkAnswer}
 						disabled = {props.selectedNumber.length === 0}>
-					=
+						=
 				</button>;
 			break;	
 	}
@@ -94,12 +96,14 @@ class Game extends React.Component {
 			return;
 		}
 		this.setState( prevState => ({
+			answerIsCorrect:null,
 			selectedNumber: prevState.selectedNumber.concat(clickedNumber)
 		}));
 	};
 	unselectNumber = (clickedNumber) => {
 		/* This unselects the number by using filter ie if it matches it removes it from answer*/
 		this.setState( prevState => ({
+			answerIsCorrect:null,
 			selectedNumber: prevState.selectedNumber
 									 .filter(number => number !== clickedNumber)
 		}))
