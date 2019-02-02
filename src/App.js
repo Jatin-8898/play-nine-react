@@ -3,6 +3,7 @@ import './App.css';
 import _ from 'lodash';
 import 'font-awesome/css/font-awesome.min.css';
 
+// ALways we use props in non functional while this.props in functional compo 
 const Stars = (props) => {
 	const numberOfStars = 1 + Math.floor(Math.random()*9);
 /* 	let stars = [];
@@ -27,18 +28,20 @@ const Button = (props) => {
   );
 };
 
+
 const Answer = (props) => {
   return (
     <div className="col-5">
-      <span>5</span>
-      <span>6</span>
+     {props.selectedNumber.map((number, i) =>
+      	<span key={i}> {number} </span>
+      )}
     </div>
   );
 };
 
 const Numbers = (props) => {
 	const numberClassName = (number) => {
-		if(props.selectedNumber.indexOf(number) >=0 ){
+		if(props.selectedNumber.indexOf(number) >=0 ){	//if its selected by the user
 			return 'selected'
 		}
 	}
@@ -55,8 +58,8 @@ const Numbers = (props) => {
   Numbers.list = _.range(1, 10);
 
 class Game extends React.Component {
-	state={
-		selectedNumber:[2,4]
+	state = {
+		selectedNumber: [3, 5],
 	};
 	render() {
   	return (
