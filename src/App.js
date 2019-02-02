@@ -33,7 +33,7 @@ const Answer = (props) => {
   return (
     <div className="col-5">
      {props.selectedNumber.map((number, i) =>
-      	<span key={i}> {number} </span>
+      	<span key={i} onClick={ () => props.unselectNumber(number)}> {number} </span>
       )}
     </div>
   );
@@ -75,6 +75,13 @@ class Game extends React.Component {
 			selectedNumber: prevState.selectedNumber.concat(clickedNumber)
 		}));
 	};
+	unselectNumber = (clickedNumber) => {
+		/* This unselects the number by using filter ie if it matches it removes it from answer*/
+		this.setState( prevState => ({
+			selectedNumber: prevState.selectedNumber
+									 .filter(number => number !== clickedNumber)
+		}))
+	}
 	render() {
   	return (
     	<div className="container-fluid text-center p-5">
@@ -83,7 +90,9 @@ class Game extends React.Component {
 			<div className="row">
 				<Stars numberOfStars={this.state.randomNumberOfStars}/>
 				<Button />
-				<Answer selectedNumber={this.state.selectedNumber}/>
+				<Answer selectedNumber={this.state.selectedNumber}
+						unselectNumber={this.unselectNumber}
+				/>
 			</div>
 			<br />
 				<Numbers selectedNumber = {this.state.selectedNumber}
