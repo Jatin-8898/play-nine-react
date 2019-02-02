@@ -134,11 +134,12 @@ class Game extends React.Component {
 		}));
 	}
 	redraw = () => {
-		this.setState({
+		this.setState( prevState => ({
 			randomNumberOfStars: 1 + Math.floor(Math.random()*9),
 			answerIsCorrect: null,
 			selectedNumbers: [],
-		});
+			redraws: prevState.redraws - 1,
+		}));
 	}
 	render() {
 		/* Destructuring the elements */
