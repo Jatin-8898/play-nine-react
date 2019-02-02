@@ -48,8 +48,9 @@ const Button = (props) => {
 		<div className="col-2 pt-2">
 			{button}
 			<br /><br/>
-			<button className="btn btn-warning btn-sm" onClick={props.redraw}>
-				<i className="fa fa-refresh"></i>
+			<button className="btn btn-warning btn-sm p-2" onClick={props.redraw}>
+				<i className="fa fa-refresh"> </i>
+				{props.redraws}
 			</button>
 		</div>
   );
@@ -97,6 +98,7 @@ class Game extends React.Component {
 		randomNumberOfStars: 1 + Math.floor(Math.random()*9),
 		usedNumbers: [],
 		answerIsCorrect: null,
+		redraws: 5,
 	};
 	selectNumber = (clickedNumber) => {
 		/* Handling the condition where same no gets added in the answer compo */
@@ -144,7 +146,8 @@ class Game extends React.Component {
 			selectedNumbers, 
 			randomNumberOfStars, 
 			answerIsCorrect, 
-			usedNumbers
+			usedNumbers,
+			redraws
 						} = this.state;
 		return (
 			<div className="container-fluid text-center p-5">
@@ -154,6 +157,7 @@ class Game extends React.Component {
 					<Stars numberOfStars={randomNumberOfStars}/>
 
 					<Button selectedNumbers = {selectedNumbers}
+							redraws = {redraws}
 							checkAnswer = {this.checkAnswer}
 							answerIsCorrect = {answerIsCorrect}
 							acceptAnswer = {this.acceptAnswer}
