@@ -37,11 +37,16 @@ const Answer = (props) => {
 };
 
 const Numbers = (props) => {
+	const numberClassName = (number) => {
+		if(props.selectedNumber.indexOf(number) >=0 ){
+			return 'selected'
+		}
+	}
 	return (
 	  <div className="card text-center">
 		<div>
 		{Numbers.list.map((number, i) =>
-        	<span key = {i} > {number} </span>
+        	<span key = {i} className={numberClassName(number)}> {number} </span>
         )}
 		</div>
 	  </div>
@@ -51,7 +56,7 @@ const Numbers = (props) => {
 
 class Game extends React.Component {
 	state={
-		selectedNumber:[4,5]
+		selectedNumber:[2,4]
 	};
 	render() {
   	return (
