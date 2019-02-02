@@ -39,7 +39,7 @@ const Button = (props) => {
 			button  = 
 				<button className="btn btn-primary" 
 						onClick = {props.checkAnswer}
-						disabled = {props.selectedNumber.length === 0}>
+						disabled = {props.selectedNumbers.length === 0}>
 						=
 				</button>;
 			break;	
@@ -55,7 +55,7 @@ const Button = (props) => {
 const Answer = (props) => {
   return (
     <div className="col-5">
-     {props.selectedNumber.map((number, i) =>
+     {props.selectedNumbers.map((number, i) =>
       	<span key={i} onClick={ () => props.unselectNumber(number)}> {number} </span>
       )}
     </div>
@@ -67,7 +67,7 @@ const Numbers = (props) => {
 		if(props.usedNumbers.indexOf(number) >=0 ){	//if its already used in the list
 			return 'used'
 		}
-		if(props.selectedNumber.indexOf(number) >=0 ){	//if its selected by the user
+		if(props.selectedNumbers.indexOf(number) >=0 ){	//if its selected by the user
 			return 'selected'
 		}
 	}
@@ -89,48 +89,48 @@ const Numbers = (props) => {
 
 class Game extends React.Component {
 	state = {
-		selectedNumber: [],
+		selectedNumbers: [],
 		randomNumberOfStars: 1 + Math.floor(Math.random()*9),
 		usedNumbers: [],
 		answerIsCorrect: null,
 	};
 	selectNumber = (clickedNumber) => {
 		/* Handling the condition where same no gets added in the answer compo */
-		if(this.state.selectedNumber.indexOf(clickedNumber)>=0){//if it no already exists do nothing
+		if(this.state.selectedNumbers.indexOf(clickedNumber)>=0){//if it no already exists do nothing
 			return;
 		}
 		this.setState( prevState => ({
 			answerIsCorrect:null,
-			selectedNumber: prevState.selectedNumber.concat(clickedNumber)
+			selectedNumbers: prevState.selectedNumbers.concat(clickedNumber)
 		}));
 	};
 	unselectNumber = (clickedNumber) => {
 		/* This unselects the number by using filter ie if it matches it removes it from answer*/
 		this.setState( prevState => ({
 			answerIsCorrect:null,
-			selectedNumber: prevState.selectedNumber
+			selectedNumbers: prevState.selectedNumbers
 									 .filter(number => number !== clickedNumber)
 		}))
 	}
 	checkAnswer = () => {
 		this.setState( prevState =>  ({
-			/* Since we want the accumulated result of the numOfStar to the selectedNumber we use reduce */
-			answerIsCorrect:prevState.randomNumberOfStars === prevState.selectedNumber.reduce( (acc,n) => acc + n, 0)
+			/* Since we want the accumulated result of the numOfStar to the selectedNumbers we use reduce */
+			answerIsCorrect:prevState.randomNumberOfStars === prevState.selectedNumbers.reduce( (acc,n) => acc + n, 0)
 		}));
 	}
 	acceptAnswer = () => {
 		this.setState( prevState => ({
-			/* Simply mark the no as used if its in selectedNumbers list  & re render UI*/
-			usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumber),
+			/* Simply mark the no as used if its in selectedNumberss list  & re render UI*/
+			usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
 			answerIsCorrect: null,
-			selectedNumbers: [],
+			selectedNumberss: [],
 			randomNumberOfStars: 1 + Math.floor(Math.random()*9),
 		}));
 	}
 	render() {
 		/* Destructuring the elements */
 		const { 
-			selectedNumber, 
+			selectedNumbers, 
 			randomNumberOfStars, 
 			answerIsCorrect, 
 			usedNumbers
@@ -141,17 +141,17 @@ class Game extends React.Component {
 				<hr />
 				<div className="row">
 					<Stars numberOfStars={randomNumberOfStars}/>
-					<Button selectedNumber={selectedNumber}
+					<Button selectedNumbers={selectedNumbers}
 							checkAnswer={this.checkAnswer}
 							answerIsCorrect={answerIsCorrect}
 							acceptAnswer={this.acceptAnswer}
 					/>
-					<Answer selectedNumber={selectedNumber}
+					<Answer selectedNumbers={selectedNumbers}
 							unselectNumber={this.unselectNumber}
 					/>
 				</div>
 				<br />
-					<Numbers selectedNumber = {selectedNumber}
+					<Numbers selectedNumbers = {selectedNumbers}
 							selectNumber = {this.selectNumber}	
 							usedNumbers = {usedNumbers}
 					/>
