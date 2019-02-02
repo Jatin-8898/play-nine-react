@@ -36,7 +36,7 @@ class Game extends React.Component {
       	<h3>Play Nine</h3>
         <Button/>
         <Answer/>
-        <Number/>
+        <Numbers/>
       </div>
     );
   }
