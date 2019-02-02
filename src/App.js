@@ -48,7 +48,9 @@ const Button = (props) => {
 		<div className="col-2 pt-2">
 			{button}
 			<br /><br/>
-			<button className="btn btn-warning btn-sm p-2" onClick={props.redraw}>
+			<button className="btn btn-warning btn-sm p-2" 
+					onClick = {props.redraw}
+					disabled ={props.redraws === 0}>
 				<i className="fa fa-refresh"> </i>
 				{props.redraws}
 			</button>
