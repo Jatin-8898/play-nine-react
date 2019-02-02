@@ -17,6 +17,18 @@ const Answer = (props) => {
   );
 };
 
+const Numbers = (props) => {
+	return (
+	  <div className="card text-center">
+		<div>
+		  <span>1</span>
+		  <span className="selected">2</span>
+		  <span className="used">3</span>
+		</div>
+	  </div>
+	);
+  };
+
 class Game extends React.Component {
 	render() {
   	return (
@@ -24,6 +36,7 @@ class Game extends React.Component {
       	<h3>Play Nine</h3>
         <Button/>
         <Answer/>
+        <Number/>
       </div>
     );
   }
