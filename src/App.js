@@ -83,23 +83,25 @@ class Game extends React.Component {
 		}))
 	}
 	render() {
-  	return (
-    	<div className="container-fluid text-center p-5">
-			<h1 className="text-success pb-4">Play Nine</h1>
-			<hr />
-			<div className="row">
-				<Stars numberOfStars={this.state.randomNumberOfStars}/>
-				<Button />
-				<Answer selectedNumber={this.state.selectedNumber}
-						unselectNumber={this.unselectNumber}
-				/>
+		/* Destructuring the elements */
+		const { selectedNumber, randomNumberOfStars} = this.state;
+		return (
+			<div className="container-fluid text-center p-5">
+				<h1 className="text-success pb-4">Play Nine</h1>
+				<hr />
+				<div className="row">
+					<Stars numberOfStars={randomNumberOfStars}/>
+					<Button />
+					<Answer selectedNumber={selectedNumber}
+							unselectNumber={this.unselectNumber}
+					/>
+				</div>
+				<br />
+					<Numbers selectedNumber = {selectedNumber}
+							selectNumber = {this.selectNumber}	
+					/>
 			</div>
-			<br />
-				<Numbers selectedNumber = {this.state.selectedNumber}
-						selectNumber = {this.selectNumber}	
-				/>
-		</div>
-    );
+		);
   }
 }
 
