@@ -67,6 +67,10 @@ class Game extends React.Component {
 		randomNumberOfStars: 1 + Math.floor(Math.random()*9),
 	};
 	selectNumber = (clickedNumber) => {
+		/* Handling the condition where same no gets added in the answer compo */
+		if(this.state.selectedNumber.indexOf(clickedNumber)>=0){//if it no already exists do nothing
+			return;
+		}
 		this.setState( prevState => ({
 			selectedNumber: prevState.selectedNumber.concat(clickedNumber)
 		}));
