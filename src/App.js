@@ -133,7 +133,7 @@ class Game extends React.Component {
 		doneStatus: null,
 	};
 	state  = Game.initialState();
-		
+
 	selectNumber = (clickedNumber) => {
 		/* Handling the condition where same no gets added in the answer compo */
 		if(this.state.selectedNumbers.indexOf(clickedNumber)>=0){//if it no already exists do nothing
@@ -199,6 +199,8 @@ class Game extends React.Component {
 			}
 		});
 	}
+	resetGame = () => this.setState(Game.initialState());
+	
 	render() {
 		/* Destructuring the elements */
 		const { 
