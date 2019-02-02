@@ -23,7 +23,7 @@ const Stars = (props) => {
 const Button = (props) => {
   return (
     <div className="col-2">
-      <button>=</button>
+      <button className="btn btn-primary" disabled={props.selectedNumber.length === 0}>=</button>
     </div>
   );
 };
@@ -91,7 +91,7 @@ class Game extends React.Component {
 				<hr />
 				<div className="row">
 					<Stars numberOfStars={randomNumberOfStars}/>
-					<Button />
+					<Button selectedNumber={selectedNumber}/>
 					<Answer selectedNumber={selectedNumber}
 							unselectNumber={this.unselectNumber}
 					/>
