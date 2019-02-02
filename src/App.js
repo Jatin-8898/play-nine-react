@@ -5,10 +5,10 @@ import 'font-awesome/css/font-awesome.min.css';
 const Stars = (props) => {
 	return (
 	  <div className="col-5">
-		<i className="fa fa-star"></i>
-		<i className="fa fa-star"></i>
-		<i className="fa fa-star"></i>
-		<i className="fa fa-star"></i>
+		<i className="fa fa-star fa-2x"></i>
+		<i className="fa fa-star fa-2x"></i>
+		<i className="fa fa-star fa-2x"></i>
+		<i className="fa fa-star fa-2x"></i>
 	  </div>
 	);
 };
@@ -44,8 +44,8 @@ const Numbers = (props) => {
 class Game extends React.Component {
 	render() {
   	return (
-    	<div className="container">
-			<h3>Play Nine</h3>
+    	<div className="container-fluid text-center">
+			<h1 className="text-success">Play Nine</h1>
 			<hr />
 			<div className="row">
 				<Stars />
