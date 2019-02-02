@@ -5,7 +5,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 // ALways we use props in non functional while this.props in functional compo 
 const Stars = (props) => {
-	const numberOfStars = 1 + Math.floor(Math.random()*9);
+	
 /* 	let stars = [];
 	for(let i=0; i<numberOfStars; i++){
 		stars.push(<i key={i} className="fa fa-star fa-2x"></i>);
@@ -13,7 +13,7 @@ const Stars = (props) => {
 
 	return (
 	  <div className="col-5">
-		{_.range(numberOfStars).map(i =>
+		{_.range(props.numberOfStars).map(i =>
         	<i key={i} className="fa fa-star fa-2x"></i>
       	)}
 	  </div>
@@ -63,7 +63,8 @@ const Numbers = (props) => {
 
 class Game extends React.Component {
 	state = {
-		selectedNumber: [3, 5],
+		selectedNumber: [],
+		randomNumberOfStars: 1 + Math.floor(Math.random()*9),
 	};
 	selectNumber = (clickedNumber) => {
 		this.setState( prevState => ({
@@ -76,7 +77,7 @@ class Game extends React.Component {
 			<h1 className="text-success pb-4">Play Nine</h1>
 			<hr />
 			<div className="row">
-				<Stars />
+				<Stars numberOfStars={this.state.randomNumberOfStars}/>
 				<Button />
 				<Answer selectedNumber={this.state.selectedNumber}/>
 			</div>
