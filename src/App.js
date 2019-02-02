@@ -100,6 +100,9 @@ const DoneFrame = (props) => {
 			<h2 className="p-4 font-weight-bold">
 				{props.doneStatus}
 			</h2>
+			<button className="btn btn-warning"
+					onClick={props.resetGame}
+			>Play Again</button>
 		</div>
 	);
 }  
@@ -124,14 +127,14 @@ var possibleCombinationSum = function(arr, n) {
 
 class Game extends React.Component {
 	static randomNumber = () => 1 + Math.floor(Math.random()*9);
-	static initialState = () ={
+	static initialState = () => ({
 		selectedNumbers: [],
 		randomNumberOfStars: Game.randomNumber(),
 		usedNumbers: [],
 		answerIsCorrect: null,
 		redraws: 5,
 		doneStatus: null,
-	};
+	});
 	state  = Game.initialState();
 
 	selectNumber = (clickedNumber) => {
@@ -200,7 +203,7 @@ class Game extends React.Component {
 		});
 	}
 	resetGame = () => this.setState(Game.initialState());
-	
+
 	render() {
 		/* Destructuring the elements */
 		const { 
@@ -232,7 +235,7 @@ class Game extends React.Component {
 
 				</div>
 				<br />
-				{	doneStatus ? <DoneFrame doneStatus={doneStatus}/> 
+				{	doneStatus ? <DoneFrame resetGame={this.resetGame} doneStatus={doneStatus}/> 
 							  :  <Numbers selectedNumbers = {selectedNumbers}
 									selectNumber = {this.selectNumber}	
 									usedNumbers = {usedNumbers}
