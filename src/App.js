@@ -3,12 +3,15 @@ import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 const Stars = (props) => {
+	const numberOfStars = 1 + Math.floor(Math.random()*9);
+	let stars = [];
+	for(let i=0; i<numberOfStars; i++){
+		stars.push(<i key={i} className="fa fa-star fa-2x"></i>);
+	}
+
 	return (
 	  <div className="col-5">
-		<i className="fa fa-star fa-2x"></i>
-		<i className="fa fa-star fa-2x"></i>
-		<i className="fa fa-star fa-2x"></i>
-		<i className="fa fa-star fa-2x"></i>
+		{stars}
 	  </div>
 	);
 };
@@ -44,8 +47,8 @@ const Numbers = (props) => {
 class Game extends React.Component {
 	render() {
   	return (
-    	<div className="container-fluid text-center">
-			<h1 className="text-success">Play Nine</h1>
+    	<div className="container-fluid text-center p-5">
+			<h1 className="text-success pb-4">Play Nine</h1>
 			<hr />
 			<div className="row">
 				<Stars />
