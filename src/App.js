@@ -124,7 +124,7 @@ var possibleCombinationSum = function(arr, n) {
 
 class Game extends React.Component {
 	static randomNumber = () => 1 + Math.floor(Math.random()*9);
-	state = {
+	static initialState = () ={
 		selectedNumbers: [],
 		randomNumberOfStars: Game.randomNumber(),
 		usedNumbers: [],
@@ -132,6 +132,8 @@ class Game extends React.Component {
 		redraws: 5,
 		doneStatus: null,
 	};
+	state  = Game.initialState();
+		
 	selectNumber = (clickedNumber) => {
 		/* Handling the condition where same no gets added in the answer compo */
 		if(this.state.selectedNumbers.indexOf(clickedNumber)>=0){//if it no already exists do nothing
