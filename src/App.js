@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import _ from 'lodash';
 import 'font-awesome/css/font-awesome.min.css';
 
 const Stars = (props) => {
