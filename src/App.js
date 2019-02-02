@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 
+const Stars = (props) => {
+	return (
+	  <div className="col-5">
+		<i className="fa fa-star"></i>
+		<i className="fa fa-star"></i>
+		<i className="fa fa-star"></i>
+		<i className="fa fa-star"></i>
+	  </div>
+	);
+};
+
 const Button = (props) => {
   return (
     <div className="col-2">
@@ -32,12 +43,17 @@ const Numbers = (props) => {
 class Game extends React.Component {
 	render() {
   	return (
-    	<div>
-      	<h3>Play Nine</h3>
-        <Button/>
-        <Answer/>
-        <Numbers/>
-      </div>
+    	<div className="container">
+			<h3>Play Nine</h3>
+			<hr />
+			<div className="row">
+				<Stars />
+				<Button />
+				<Answer />
+			</div>
+			<br />
+				<Numbers />
+		</div>
     );
   }
 }
