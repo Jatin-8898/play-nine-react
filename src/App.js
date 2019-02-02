@@ -64,6 +64,9 @@ const Answer = (props) => {
 
 const Numbers = (props) => {
 	const numberClassName = (number) => {
+		if(props.usedNumbers.indexOf(number) >=0 ){	//if its already used in the list
+			return 'used'
+		}
 		if(props.selectedNumber.indexOf(number) >=0 ){	//if its selected by the user
 			return 'selected'
 		}
@@ -88,6 +91,7 @@ class Game extends React.Component {
 	state = {
 		selectedNumber: [],
 		randomNumberOfStars: 1 + Math.floor(Math.random()*9),
+		usedNumbers: [4,7],
 		answerIsCorrect: null,
 	};
 	selectNumber = (clickedNumber) => {
@@ -114,9 +118,17 @@ class Game extends React.Component {
 			answerIsCorrect:prevState.randomNumberOfStars === prevState.selectedNumber.reduce( (acc,n) => acc + n, 0)
 		}));
 	}
+	acceptAnswer = () => {
+
+	}
 	render() {
 		/* Destructuring the elements */
-		const { selectedNumber, randomNumberOfStars, answerIsCorrect} = this.state;
+		const { 
+			selectedNumber, 
+			randomNumberOfStars, 
+			answerIsCorrect, 
+			usedNumbers
+						} = this.state;
 		return (
 			<div className="container-fluid text-center p-5">
 				<h1 className="text-success pb-4">Play Nine</h1>
@@ -134,6 +146,7 @@ class Game extends React.Component {
 				<br />
 					<Numbers selectedNumber = {selectedNumber}
 							selectNumber = {this.selectNumber}	
+							usedNumbers = {usedNumbers}
 					/>
 			</div>
 		);
