@@ -50,6 +50,9 @@ const Numbers = (props) => {
   Numbers.list = _.range(1, 10);
 
 class Game extends React.Component {
+	state={
+		selectedNumber:[4,5]
+	};
 	render() {
   	return (
     	<div className="container-fluid text-center p-5">
@@ -58,10 +61,10 @@ class Game extends React.Component {
 			<div className="row">
 				<Stars />
 				<Button />
-				<Answer />
+				<Answer selectedNumber={this.state.selectedNumber}/>
 			</div>
 			<br />
-				<Numbers />
+				<Numbers selectedNumber={this.state.selectedNumber}/>
 		</div>
     );
   }
