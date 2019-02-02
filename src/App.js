@@ -134,6 +134,9 @@ class Game extends React.Component {
 		}));
 	}
 	redraw = () => {
+		if(this.state.redraws === 0){
+			return;
+		}
 		this.setState( prevState => ({
 			randomNumberOfStars: 1 + Math.floor(Math.random()*9),
 			answerIsCorrect: null,
