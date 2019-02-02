@@ -103,6 +103,25 @@ const DoneFrame = (props) => {
 		</div>
 	);
 }  
+
+var possibleCombinationSum = function(arr, n) {
+	if (arr.indexOf(n) >= 0) { return true; }
+	if (arr[0] > n) { return false; }
+	if (arr[arr.length - 1] > n) {
+	  arr.pop();
+	  return possibleCombinationSum(arr, n);
+	}
+	var listSize = arr.length, combinationsCount = (1 << listSize)
+	for (var i = 1; i < combinationsCount ; i++ ) {
+	  var combinationSum = 0;
+	  for (var j=0 ; j < listSize ; j++) {
+		if (i & (1 << j)) { combinationSum += arr[j]; }
+	  }
+	  if (n === combinationSum) { return true; }
+	}
+	return false;
+  };
+
 class Game extends React.Component {
 	static randomNumber = () => 1 + Math.floor(Math.random()*9);
 	state = {
@@ -111,7 +130,7 @@ class Game extends React.Component {
 		usedNumbers: [],
 		answerIsCorrect: null,
 		redraws: 5,
-		doneStatus: 'Game Over!',
+		doneStatus: null,
 	};
 	selectNumber = (clickedNumber) => {
 		/* Handling the condition where same no gets added in the answer compo */
@@ -156,6 +175,24 @@ class Game extends React.Component {
 			selectedNumbers: [],
 			redraws: prevState.redraws - 1,
 		}));
+	}
+	
+	PossibleSolutions = ({randomNumberOfStars, usedNumbers}) => {
+		/* We want to exclude the used Numbers so using filter from new poss range */
+		const possibleNumbers = _.range(1,10)
+								.filter(number => usedNumbers.indexOf(number) === -1);
+		
+		return	possibleCombinationSum(possibleNumbers, randomNumberOfStars);
+	};
+	updateDoneStatus = () => {
+		this.setState( prevState => {
+			if(prevState.usedNumbers.length === 0){
+				return {doneStatus: 'Done, Thanks For Playing!!'}
+			}
+			if(prevState.redraws === 0 && !this.PossibleSolutions(prevState)){
+				return {doneStatus: 'Game Over!!'}
+			}
+		});
 	}
 	render() {
 		/* Destructuring the elements */
