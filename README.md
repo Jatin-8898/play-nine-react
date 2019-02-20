@@ -1,4 +1,4 @@
-# React-Play-Nine
+# Play Nine
 React.js Play Nine Game
 - A simple game using 9 Numbers where the users have to make the total equal to the number of stars displayed using the numbers.
 - Numbers once used can't be used again.
