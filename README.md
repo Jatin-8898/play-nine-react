@@ -27,7 +27,7 @@ The easiest way to get started is to clone the repository:
 git clone https://github.com/Jatin-8898/play-nine-react.git
 
 # Change directory
-cd React-Play-Nine
+cd play-nine-react
 
 # Install NPM dependencies
 npm install
