@@ -24,7 +24,7 @@ The easiest way to get started is to clone the repository:
 
 ```bash
 # Get the latest snapshot
-git clone https://github.com/extwiii/React-Play-Nine.git
+git clone https://github.com/Jatin-8898/play-nine-react.git
 
 # Change directory
 cd React-Play-Nine
