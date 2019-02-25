@@ -1,11 +1,12 @@
-# Play Nine
+#  :large_blue_circle: Play Nine Game :large_blue_circle:
 React.js Play Nine Game
 - A simple game using 9 Numbers where the users have to make the total equal to the number of stars displayed using the numbers.
 - Numbers once used can't be used again.
 - Five retries are available.
 
+## See it live [HERE](http://nutty-unit.surge.sh)
 
-Features
+♦️ Features
 --------
 - React.js 
 - Create React App
@@ -13,11 +14,11 @@ Features
 - Font-Awesome
 
 
-Prerequisites
+📜 Prerequisites
 -------------
 - NPM
 
-Getting Started
+📝 Getting Started
 -------------
 
 The easiest way to get started is to clone the repository:
