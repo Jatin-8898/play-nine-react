@@ -5,7 +5,7 @@
   "dependencies": {
     "bootstrap": "^4.2.1",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-lodash": "^0.1.2",
